@@ -261,7 +261,7 @@ across_categories = [
   "frequent_family_conflict_p",
   "family_open_discussing_anything_p",
   "worries_p",
-  "nervous_general_p",
+  # "nervous_general_p",
   "fears_school_p",
   "fears_being_bad_p",
   "wishes_other_sex_p",
@@ -290,8 +290,8 @@ def save_plot(model, name, X, y, tp):
 
   # Create the plot
   plt.figure(figsize=(8, 6))
-  sns.barplot(x=sorted_coefs.values, y=sorted_coefs.index, palette="gray")
-  plt.title(f"Full sample: LASSO Coefficients depression ~ {name} (R² = {r_sq:.4f}, RMSE = {rmse:.4f}), t = {tp}")
+  sns.barplot(x=sorted_coefs.values, y=sorted_coefs.index, palette="gray", hue=sorted_coefs.index, legend=False)
+  plt.title(f"LASSO Coefficients depression ~ {name} (R² = {r_sq:.4f}, RMSE = {rmse:.4f}), t = {tp}")
   plt.xlabel("Coefficient")
   plt.tight_layout()
 
@@ -305,7 +305,7 @@ def save_plot(model, name, X, y, tp):
 def save_plot_2(coefs, name, metric, metric_score, tp):
   # Create the plot
   plt.figure(figsize=(8, 6))
-  sns.barplot(x=coefs.values, y=coefs.index, palette="gray")
+  sns.barplot(x=coefs.values, y=coefs.index, palette="gray", hue=coefs.index, legend=False)
   plt.title(f"{name} ({metric} = {metric_score:.4f}, t = {tp})")
   plt.xlabel("Importance")
   plt.ylabel("Feature")
